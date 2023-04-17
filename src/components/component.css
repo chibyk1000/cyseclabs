@@ -1,0 +1,428 @@
+/* ================================ */
+/* Navbar */
+/* ================================ */
+.notification-box {
+  position: relative;
+}
+.notification_bar {
+  position: absolute;
+  width: 100%;
+  top: -1rem;
+  right: 1rem;
+  padding: 2rem;
+  z-index: 3000;
+  background-image: linear-gradient(
+    180deg,
+    rgba(85, 136, 202, 0.877),
+    rgba(57, 79, 126, 0.979)
+  );
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 100;
+  letter-spacing: 0.3px;
+  border-radius: 0.8rem;
+}
+/* @media only screen and (min-width: 480px) {
+  .notification-bar {
+    margin-right: 2rem;
+    right: -5;
+    width: 30%;
+    padding: 1rem;
+  }
+  } */
+.notification_bar .notification-closebutton {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  font-size: 1.3rem;
+  padding: 0.1rem 0.6rem;
+  line-height: 1.5;
+  border-radius: 0.5rem;
+  background-color: #16161698;
+  cursor: pointer;
+}
+@media only screen and (max-width: 480px) {
+  .notification_bar .notification-closebutton {
+    right: -1.7rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.7rem 1.5rem;
+    line-height: normal;
+    font-size: 1.8rem;
+  }
+}
+.notification_bar .notification-closebutton:hover {
+  background-color: rgba(211, 16, 16, 0.973);
+  color: #fff;
+  font-weight: 500;
+}
+.header {
+  background-color: #000806;
+  display: flex;
+  padding: 0 30px 0 30px;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  justify-content: space-between;
+}
+
+.logo {
+  flex-basis: 20%;
+  cursor: pointer;
+}
+.header .logo img {
+  width: 60px;
+}
+nav {
+  flex-basis: 80%;
+}
+.navMenu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.3rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+}
+.navMenu li {
+  margin-right: 20px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: background-color 0.3s cubic-bezier(0.42, -0.08, 0, 0.28);
+  color: rgb(255, 255, 255);
+}
+.navMenu li:hover {
+  background-color: #fff8e9;
+  border-radius: 0.6rem;
+  color: #8b6d07;
+}
+
+.menu {
+  display: none;
+}
+.line {
+  fill: none;
+  stroke: #00923f;
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+
+nav .button {
+  padding: 10px 15px;
+  background-color: #00923f;
+  color: #fff;
+}
+
+/* .header {
+    display: flex;
+    margin: 0 30px 0 30px;
+    align-items: center;
+    width: 90%;
+    height: 70px;
+  }
+  .logo {
+    flex-basis: 20%;
+  }
+  .menu {
+    display: none;
+  }
+  .header .logo img {
+    width: 60px;
+  }
+  nav {
+    flex-basis: 80%;
+  }
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  nav ul li {
+    margin-right: 20px;
+  }
+  nav .button {
+    padding: 10px 15px;
+    background-color: #00923f;
+    color: #fff;
+  } */
+/* ================================ */
+/* NEW */
+/* ================================ */
+.labsGrid {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-flow: row wrap;
+}
+.labsGrid .labsGrid-box {
+  flex-basis: 30%;
+  flex-grow: 1;
+  margin: 1rem;
+  border-radius: 7px;
+  border: 1px solid #3945e644;
+  padding: 1rem;
+  transition: scale 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+.labsGrid .labsGrid-box:hover {
+  scale: 1.03;
+  box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.473);
+}
+.labsGrid-name {
+  font-size: 1.7rem;
+}
+.labsGrid-category {
+  margin: 1rem 0;
+}
+
+.labsGrid-box .labsGrid-tags {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  flex-flow: row wrap;
+}
+.labsGrid-tags p {
+  font-size: 1rem;
+  margin: 0.2rem 0.5rem;
+  background-color: #3945e644;
+  padding: 0.5rem 0.7rem;
+  border-radius: 3px;
+  color: #ffffff7a;
+}
+.start {
+  text-align: center;
+  margin: 1.5rem auto;
+  display: block;
+  background-color: #1ebd88;
+  padding: 1rem 0;
+  font-size: 1.3rem;
+  border-radius: 5px;
+  font-weight: 600;
+}
+.start:hover {
+  background-color: #e70808;
+  scale: 0.98;
+  box-shadow: 1px 4px 7px rgba(26, 25, 25, 0.411);
+}
+/* ================================================
+              Machines
+=================================================== */
+/* activate toggle */
+.accordion_item {
+  margin-bottom: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+  padding: 0.7rem;
+}
+.accordion_item.active .button {
+  background-color: #105057;
+}
+.answer_wrapper {
+  height: 0;
+  border-left: 4px solid #1c55c0e8;
+  padding: 0 1rem;
+  overflow: hidden;
+  transition: height ease 0.2s;
+}
+.answer_wrapper.open {
+  height: 100px;
+}
+.question-title {
+  background-color: #1c55c0e8;
+  width: 100%;
+  text-align: left;
+  outline: none;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.question-title .control {
+  float: right;
+  font-weight: 600;
+}
+
+.machine-text p {
+  text-align: start;
+  font-size: 1.3rem;
+  word-spacing: 1px;
+  line-height: 2;
+  padding: 1.5rem 0rem 1rem 1rem;
+}
+
+.machine-text h3 {
+  text-transform: capitalize;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 3.2rem;
+  margin-left: 1rem;
+}
+.machine-text li {
+  list-style-type: circle;
+  text-transform: capitalize;
+  font-weight: 300;
+  line-height: 2;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-left: 3.5rem;
+  margin-bottom: 1rem;
+}
+.room-questions div {
+  text-transform: capitalize;
+  font-size: 1.7rem;
+  font-style: oblique;
+  color: #e2d407;
+  margin-left: 1rem;
+  margin-bottom: 1.6rem;
+}
+.room-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.room-input .room-input-questions {
+  height: 9rem;
+  background-color: #161616;
+  flex-basis: 60%;
+}
+.room-input .room-answer {
+  flex-basis: 20%;
+}
+
+/* .room-input .room-answer button {
+  background-color: blue;
+  outline: none;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  padding: 1.3rem 4.7rem;
+} */
+
+.room-input .room-input-questions textarea {
+  height: 100%;
+  background-color: #6e6e6e00;
+  border: 1px solid rgba(255, 255, 255, 0.199);
+  border-radius: 1rem;
+  padding: 1rem;
+  outline: #1ebd88;
+  width: 100%;
+}
+/* ========================
+          SETTINGS
+============================*/
+.editProfile {
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.profileTop {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 2rem 0;
+}
+.profileTop .profileImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileImg label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: #2759e5;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.profileImg img {
+  margin: 1.5rem 0;
+  width: 10rem;
+  border-radius: 50%;
+  padding: 0.4rem;
+  border: 0.3rem solid #ffed50;
+}
+.profileImgSave {
+  background-color: #1ebd88;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.6rem;
+}
+.profileData .profileRank {
+  display: flex;
+  justify-content: space-between;
+}
+.profileData .profileName {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  flex-basis: 35%;
+}
+.profileData {
+  flex-basis: 60%;
+  align-self: stretch;
+  display: flex;
+  font-size: 1.3rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.profileData span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #0cbc8a;
+}
+.profileBottom {
+  width: 80%;
+  margin: 4rem auto 1rem auto;
+  justify-content: space-evenly;
+}
+.profileDesc p {
+  margin-top: 1.5rem;
+  padding: 2rem 1rem;
+  border: 1px solid rgb(70, 93, 76);
+  border-radius: 0.6rem;
+  background-color: #0e1712;
+  font-size: 1.3rem;
+}
+.profileDesc h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.updateProfileSec {
+  width: 80%;
+  margin: 4rem auto 1rem auto;
+}

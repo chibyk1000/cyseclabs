@@ -1,0 +1,51 @@
+Floders-
+
+Admin
+Contains all files that deals with the admin logic
+
+Assets
+Contains all images and svgs used in the project
+
+Auth
+Contains all the authentication logic with a css file for all Components
+
+Components
+Contains all the components used in this project
+
+Context
+This is the context wrapper that manages the state on the project
+
+Pages
+This contains all the screens on the project and Pages
+
+Shared
+This contains the spinner component in the project
+
+Utils
+A wrapper container for the API calls to the server
+
+
+FUNCTIONS
+RegisterUser -  This function register the user on the database. After the function is called, it redirects the user to the verify component for verification token that will be sent on the users email.
+
+RegisterAdminUser - This function creates a admnin user for the dashboard when called upon
+
+VerifyUser - This function verifies the token when called, The token is sent to the user email
+
+LoginUser - This function logs in an existing from the database. It will redirect the user to the dashboard Page
+
+LogoutUser -  This function logs out the user from the cached data and redirects the user to the login
+
+checkUser - The is a motheer function that checks status of the, if a user exist, it will redirect the user to the dashboard section. Also if a user is an admin more dashboard features will be rendered on the dashboard.
+
+closeNotification - This is an experimental function that toggles a notification on the dashboard
+
+FetchLabs -  This functions gets all the labsData from the database
+
+DeleteLab - This function deletes any lab selected on the database
+
+Addlab -  This function creates new lab on the database collection of the labs
+
+UpdateLabs - This function is called upon when an update on any labs is selected
+
+
