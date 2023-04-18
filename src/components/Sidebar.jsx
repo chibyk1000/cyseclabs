@@ -1,13 +1,24 @@
 import React, { useContext } from "react";
 import userImg from "../assets/img/image.me.jpg";
 import { ImUpload3 } from "react-icons/im";
-//import { MdLibraryAdd } from "react-icons/md";
+import { FaListAlt } from "react-icons/fa";
 import { HiFolderAdd } from "react-icons/hi";
 import logout from "../assets/img/heroicons-outline_logout.svg";
+import { IoIosListBox } from "react-icons/io";
+import { BiTask } from "react-icons/bi";
 import { NavLink, useNavigate } from "react-router-dom";
 import GlobalContext from "../context/GlobalContext";
 import axios from "axios";
-
+import { GrTasks } from "react-icons/gr";
+import { MdPlaylistAdd } from "react-icons/md";
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Divider,
+} from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
+import { AiFillFolderAdd } from "react-icons/ai";
 function Sidebar({ handleTab }) {
   const { adminUser } = useContext(GlobalContext);
   const navigate = useNavigate();
@@ -112,31 +123,130 @@ function Sidebar({ handleTab }) {
               <h5>Labs</h5>
             </NavLink>
           </div>
-          <div className="divider">&nbsp;</div>
+          <Divider sx={{ backgroundColor: "white" }} />
           {adminUser && (
             <>
-              <NavLink
-                end
-                to="/dashboard/createlab"
-                className={({ isActive }) =>
-                  isActive ? "sidemenu-item active" : "sidemenu-item"
-                }
-                onClick={() => handleTab("tab6")}
-              >
-                <HiFolderAdd style={{ color: "#0cbc8a", fontSize: "23px" }} />
-                <h5>Create Labs</h5>
-              </NavLink>
-              <NavLink
-                end
-                to="/dashboard/creatematerials"
-                className={({ isActive }) =>
-                  isActive ? "sidemenu-item active" : "sidemenu-item"
-                }
-                onClick={() => handleTab("tab7")}
-              >
-                <ImUpload3 style={{ color: "#0cbc8a", fontSize: "20px" }} />
-                <h5>Create Materials</h5>
-              </NavLink>
+              <Accordion disableGutters sx={{ background: "none" }}>
+                <AccordionSummary
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  className=" sidemenu-item"
+                >
+                  <div className="sidemenu-summary">
+                    <HiFolderAdd
+                      style={{ color: "#0cbc8a", fontSize: "23px" }}
+                    />
+                    <h5>Manage Labs</h5>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <NavLink
+                    end
+                    to="/dashboard/all-labs"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab6")}
+                  >
+                    <FaListAlt style={{ color: "#0cbc8a", fontSize: "23px" }} />
+                    <h5>All Labs</h5>
+                  </NavLink>
+                  <NavLink
+                    end
+                    to="/dashboard/createlabs"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab6")}
+                  >
+                    <AiFillFolderAdd
+                      style={{ color: "#0cbc8a", fontSize: "23px" }}
+                    />
+                    <h5>New Labs</h5>
+                  </NavLink>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion disableGutters sx={{ background: "none" }}>
+                <AccordionSummary
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  className="sidemenu-item"
+                >
+                  <div className="sidemenu-summary">
+                    <ImUpload3 style={{ color: "#0cbc8a", fontSize: "20px" }} />
+                    <h5>Manage Materials</h5>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <NavLink
+                    end
+                    to="/dashboard/creatematerials"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab7")}
+                  >
+                    <MdPlaylistAdd
+                      style={{ color: "#0cbc8a", fontSize: "20px" }}
+                    />
+                    <h5>New Materials</h5>
+                  </NavLink>
+                  <NavLink
+                    end
+                    to="/dashboard/creatematerials"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab7")}
+                  >
+                    <IoIosListBox
+                      style={{ color: "#0cbc8a", fontSize: "20px" }}
+                    />
+                    <h5>All Materials</h5>
+                  </NavLink>
+                </AccordionDetails>
+              </Accordion>
+              <Accordion disableGutters sx={{ background: "none" }}>
+                <AccordionSummary
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                  expandIcon={<ExpandMore sx={{ color: "white" }} />}
+                  className="sidemenu-item"
+                >
+                  <div className="sidemenu-summary">
+                    <BiTask style={{ color: "#0cbc8a", fontSize: "20px" }} />
+                    <h5>Manage Task</h5>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <NavLink
+                    end
+                    to="/dashboard/createtasks"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab7")}
+                  >
+                    <MdPlaylistAdd
+                      style={{ color: "#0cbc8a", fontSize: "20px" }}
+                    />
+                    <h5>New Tasks</h5>
+                  </NavLink>
+                  <NavLink
+                    end
+                    to="/dashboard/units"
+                    className={({ isActive }) =>
+                      isActive ? "sidemenu-item active" : "sidemenu-item"
+                    }
+                    onClick={() => handleTab("tab7")}
+                  >
+                    <GrTasks style={{ color: "#0cbc8a", fontSize: "20px" }} />
+                    <h5>All Tasks</h5>
+                  </NavLink>
+                </AccordionDetails>
+              </Accordion>
             </>
           )}
 

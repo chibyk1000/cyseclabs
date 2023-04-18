@@ -16,7 +16,7 @@ function DashNavbar({ handleTab }) {
     };
     search(data);
     navigate("/dashboard/search");
-  };    
+  };
 
   return (
     <header>
@@ -53,7 +53,7 @@ function DashNavbar({ handleTab }) {
         </form>
         <div className="user">
           <img src={user} alt="user" />
-          <h5>Michael</h5>
+          <h5>Michael </h5>
         </div>
         <button className="menu" id="menu" aria-label="Main Menu">
           <svg width="50" height="100" viewBox="0 0 100 100">

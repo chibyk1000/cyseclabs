@@ -8,6 +8,7 @@ import DashboardNotification from "./DashboardNotification";
 
 function DashboardHome() {
   const { user } = useContext(GlobalContext);
+
   //  window.location.reload()
 
   //console.log(user);

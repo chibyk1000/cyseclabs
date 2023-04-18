@@ -6,12 +6,14 @@ import GlobalContext from "../context/GlobalContext";
 import "./Admin.css";
 import Preview from "./Preview";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 function CreateLab() {
   const navigate = useNavigate();
-  // const imageMimeType = /image\/(png|jpg|jpeg)/i;
+
   const { addLab, labEdit, updateLab, labsData } = useContext(GlobalContext);
-  // const [formData, setFormData] = useState(labsData);
+
   const [file, setFile] = useState(null);
   const [labImage, setLabImage] = useState(null);
 
@@ -43,81 +45,34 @@ function CreateLab() {
 
   //This part help trigger the button to update it, the labEdit
 
-    if (labEdit.edit === true) {
-      //window.location.reload();
-      nameRef.current.value = labEdit.lab.name;
-      [tagsRef.current.value] = labEdit.lab.tags;
-      descriptionRef.current.value = labEdit.lab.description;
-      categoryRef.current.value = labEdit.lab.category;
-      pathRef.current.value = labEdit.lab.path;
-    }
- 
-
-  // const onChange = (e) => {
-  //   //   For Image Review
-  //   //For files
-  //   if (e.target.files) {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       image: e.target.files[0],
-  //     }));
-  //     setFile(e.target.files[0]);
-  //   }
-  //   //For text/boolean/numbers
-  //   if (!e.target.files) {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       [e.target.id]: e.target.value,
-  //     }));
-  //   }
-  // };
-
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    const formdata = new FormData();
+    formdata.append("name", nameRef.current.value);
+    formdata.append("description", descriptionRef.current.value);
+    formdata.append("tags", tagsRef.current.value);
+    formdata.append("path", pathRef.current.value);
+    formdata.append("category", categoryRef.current.value);
+    formdata.append("labImage", labImageRef.current.files[0]);
 
-    const data = {
-      name: nameRef.current.value,
-      description: descriptionRef.current.value,
-      tags: [tagsRef.current.value],
-      path: pathRef.current.value,
-      category: categoryRef.current.value,
-      labImage: labImageRef.current.value,
-    };
-    if (labEdit.edit === true) {
-      updateLab(labEdit.lab.id, data);
-      labEdit.edit = false;
-    } else {
-      addLab(data);
-    }
-    // delete labsDataCopy.image;
-    console.log(labsData);
-    window.location.reload();
-    //console.log(data);
-    //Check if the labEdit function is triggered, if yes, update the id of the document
+    const resp = await axios.post("/manage/create-new-lab", formdata, {
+      headers: {
+        authorization: JSON.parse(sessionStorage.getItem("token"))?.token,
+      },
+      withCredentials: true,
+    });
+    if (resp.status === 200) {
+      toast.success("lab created");
 
-    setLabImage(null);
+      tagsRef.current.value = "";
+      pathRef.current.value = "";
+      descriptionRef.current.value = "";
+      nameRef.current.value = "";
+
+      categoryRef.current.value = "";
+    } else toast.error(resp.response.data.message);
+    // window.location.reload();
   };
-
-  // useEffect(() => {
-  //   let fileReader,
-  //     isCancel = false;
-  //   if (file) {
-  //     fileReader = new FileReader();
-  //     fileReader.onload = (e) => {
-  //       const { result } = e.target;
-  //       if (result && !isCancel) {
-  //         setLabImage(result);
-  //       }
-  //     };
-  //     fileReader.readAsDataURL(file);
-  //   }
-  //   return () => {
-  //     isCancel = true;
-  //     if (fileReader && fileReader.readyState === 1) {
-  //       fileReader.abort();
-  //     }
-  //   };
-  // }, [file]);
 
   return (
     <div className="box create-labs">
@@ -238,12 +193,6 @@ function CreateLab() {
           </button>
         )}
       </form>
-
-      <div className="display-labs">
-        {labsData.map((prevLab) => (
-          <Preview preview={prevLab} key={prevLab.id} id={prevLab.id} />
-        ))}
-      </div>
     </div>
   );
 }

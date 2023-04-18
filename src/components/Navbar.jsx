@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../assets/img/cysecnewlogo.png";
 import GlobalContext from "../context/GlobalContext";
 import "./component.css";
@@ -12,15 +12,21 @@ function Navbar() {
     <header>
       <div className="header">
         <div className="logo">
-          <img src={logo} alt="logo" onClick={() => navigate("/")} />
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
         </div>
         <nav className="nav-collapse">
           <ul id="navMenu" className="navMenu">
-            <li onClick={() => navigate("/")}>Home</li>
-            <li onClick={() => navigate("/competition")}>Compete</li>
-            <button className="btn btn-a" onClick={() => checkUser()}>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li onClick={() => navigate("/competition")}>
+              <Link to="/competition">Compete</Link>
+            </li>
+            <Link className="btn btn-a" to="/login">
               Get Started
-            </button>
+            </Link>
           </ul>
         </nav>
         <button className="menu" id="menu" aria-label="Main Menu">

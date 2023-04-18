@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound";
 import CreateLab from "./admin/CreateLab";
 import Labs from "./components/Labs";
 import Leaderboard from "./components/Leaderboard";
-import CreateMaterials from "./admin/CreateMaterials";
+import CreateUnits from "./admin/CreateUnits";
 import Settings from "./components/Settings";
 import DashboardHome from "./components/DashboardHome";
 import DownloadVPN from "./components/DownloadVPN";
@@ -24,7 +24,10 @@ import Verify from "./Auth/Verify";
 import axios from "axios";
 import SuperAdmin from "./admin/SuperAdmin";
 import SearchPage from "./components/SearchPage";
-
+import AllLabs from "./admin/Labs";
+import EditLab from "./admin/EditLab";
+import Units from "./admin/Units";
+import Tasks from "./admin/Tasks";
 function App() {
   axios.defaults.withCredentials = true;
 
@@ -49,8 +52,12 @@ function App() {
             <Route path="settings" element={<Settings />} />
             <Route path="labs/:id" element={<Machine />} />
             <Route element={<AdminAccess />}>
-              <Route path="createlab" element={<CreateLab />} />
-              <Route path="creatematerials" element={<CreateMaterials />} />
+              <Route path="createlabs" element={<CreateLab />} />
+              <Route path="all-labs" element={<AllLabs />} />
+              <Route path="edit-lab/:id" element={<EditLab />} />
+              <Route path="createtasks" element={<CreateUnits />} />
+              <Route path="units" element={<Units />} />
+              <Route path="tasks/:id" element={<Tasks />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFound />} />

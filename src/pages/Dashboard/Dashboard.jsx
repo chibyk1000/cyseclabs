@@ -10,7 +10,6 @@ import GlobalContext from "../../context/GlobalContext";
 function Dashboard() {
   const [activeTab, setActiveTab] = useState("tab1");
   const { user, checkUser } = useContext(GlobalContext);
-
   useEffect(() => {
     checkUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -24,7 +23,7 @@ function Dashboard() {
 
   return (
     <>
-      {user.length > 0 && (
+      {user && (
         <div>
           <DashNavbar handleTab={handleTab} />
           <main>
