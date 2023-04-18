@@ -7,7 +7,6 @@ import { LabModel } from "../../models/lab/lab.model";
 import { UnitModel } from "../../models/lab/details/unit/unit.model";
 import { TaskModel } from "../../models/lab/details/task/task.model";
 
-
 interface IGetUserAuthInfoRequest extends Request {
   user: any;
 }
@@ -50,6 +49,8 @@ export const CreateLab = {
         });
       }
       const { name, description, tags, path, category } = request.body;
+      console.log(request.body);
+
       if (!name || !description || !tags || !path || !category) {
         return response
           .status(BAD_REQUEST)
@@ -133,7 +134,6 @@ export const CreateLab = {
           message: "Unable to find a matching lab with the given ID.",
         });
       }
-   
 
       labInDB.id = sanitize(name.replace(/\s+/g, "-").toLowerCase());
       labInDB.name = sanitize(name);
@@ -184,7 +184,8 @@ export const CreateLab = {
               });
             } else {
               const { labId } = request.body;
-              console.log(request.body);
+              console.log(labId);
+
               if (!labId) {
                 return response.status(BAD_REQUEST).json({
                   message: "Required field(s) missing",
@@ -350,15 +351,18 @@ export const CreateLab = {
         message: "Update successful.",
       });
     } catch (error) {
-       if (error) {
-         return response
-           .status(INTERNAL_SERVER_ERROR)
-           .json({ message: "An error occurred. Please try again." });
-       }
+      if (error) {
+        return response
+          .status(INTERNAL_SERVER_ERROR)
+          .json({ message: "An error occurred. Please try again." });
+      }
     }
   },
 
-  deleteUnit: async(request: IGetUserAuthInfoRequest | any, response: Response) => {
+  deleteUnit: async (
+    request: IGetUserAuthInfoRequest | any,
+    response: Response
+  ) => {
     const user = request.user;
     try {
       if (!user) {
@@ -403,7 +407,6 @@ export const CreateLab = {
           .json({ message: "An error occurred. Please try again." });
       }
     }
-    
   },
 
   createTask: async (
